@@ -15,16 +15,15 @@ def main():
             memory[memory_pointer] += 1
         elif char == '-':
             memory[memory_pointer] -= 1
-        elif char in "><":
-            if char == '>':
-                if memory_pointer == len(memory) - 1:
-                    memory.append(0)
-                memory_pointer += 1
+        elif char == '>':
+            if memory_pointer == len(memory) - 1:
+                memory.append(0)
+            memory_pointer += 1
+        elif char == '<':
+            if memory_pointer == 0:
+                memory.insert(0, 0)
             else:
-                if memory_pointer == 0:
-                    memory.insert(0, 0)
-                else:
-                    memory_pointer -= 1
+                memory_pointer -= 1
         elif (char == '[' and memory[memory_pointer] == 0) or (char == ']' and memory[memory_pointer] != 0):
             depth = 1
             direction = 1 if char == '[' else -1
